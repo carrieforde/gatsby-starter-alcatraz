@@ -1,0 +1,26 @@
+.socialNav {
+	color: var(--color-primary-8);
+	display: inline-flex;
+	list-style: none;
+	margin: var(--size-5) 0 0;
+	padding: 0;
+}
+
+.socialNavItem {
+	height: 20px;
+	width: 20px;
+}
+
+.socialNavItem + .socialNavItem {
+	/* margin-top: 12px; */
+	margin-left: var(--size-3);
+	margin-top: 0;
+}
+
+.socialNavItem a {
+	background: none;
+}
+
+.socialNavLabel {
+	composes: visuallyHidden from '../../styles/utilities.module.css';
+}
