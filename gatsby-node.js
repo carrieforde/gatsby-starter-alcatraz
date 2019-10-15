@@ -10,7 +10,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
 
   if (node.internal.type === 'MarkdownRemark') {
-    const slug = createFilePath({ node, getNode, basePath: 'content/posts' });
+    const slug = createFilePath({
+      node,
+      getNode,
+      basePath: `${__dirname}/content/posts`
+    });
 
     createNodeField({
       node,
@@ -47,18 +51,20 @@ exports.createPages = ({ graphql, actions }) => {
   });
 };
 
-// Fix polyfill for webcomponents.
-exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === 'build-html') {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            test: /cf-alert/,
-            use: loaders.null()
-          }
-        ]
-      }
+exports.onCreateNode = ({ node, getNode, actions }) => {
+  const { createNodeField } = actions;
+
+  if (node.internal.type === 'MarkdownRemark') {
+    const slug = createFilePath({
+      node,
+      getNode,
+      basePath: `${__dirname}/content/pages`
+    });
+
+    createNodeField({
+      node,
+      name: 'slug',
+      value: slug
     });
   }
 };

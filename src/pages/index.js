@@ -13,7 +13,7 @@ import PageDescription from '../components/PageDescription';
 import pageDescriptionStyles from '../components/PageDescription/pageDescription.module.css';
 
 const IndexPage = ({ data }) => {
-  const { file, experience } = data;
+  const { file } = data;
   return (
     <Site>
       <SEO title="Home" />
