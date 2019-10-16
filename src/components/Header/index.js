@@ -23,7 +23,9 @@ const Header = () => {
   return (
     <header className={styles.siteHeader}>
       <Link className={styles.siteBranding} to="/">
-        {logo && <img src={logo} alt={`${title} logo`} />}
+        {logo && (
+          <img className={styles.siteLogo} src={logo} alt={`${title} logo`} />
+        )}
         <h1 className={data.logo ? styles.siteTitle : undefined}>{title}</h1>
       </Link>
       <MainMenu />

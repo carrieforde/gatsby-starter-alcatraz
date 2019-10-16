@@ -5,29 +5,25 @@
   </a>
 </p>
 <h1 align="center">
-  Carrie Forde
+  gatsby-starter-alcatraz
 </h1>
-
-This site is based off the default [Gatsby Starter](https://github.com/gatsbyjs/gatsby-starter-default), and was tweaked to add blog content.
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/30bde48a-a28b-45e4-bd15-afe554a3f2a8/deploy-status)](https://app.netlify.com/sites/carrieforde/deploys)
 
 ## 🚀Quick start
 
 1. Clone the repo locally
 
 ```sh
-git clone https://github.com/carrieforde/carrieforde-gatsby.git carrieforde
+git clone https://github.com/carrieforde/gatsby-starter-alcatraz.git gatsby-starter-alcatraz
 ```
 
 2. Install dependencies
 
 ```sh
-cd carrieforde
+cd gatsby-starter-alcatraz
 npm install
 ```
 
-3. Start hte development server
+3. Start the development server
 
 ```sh
 gastby develop
