@@ -8,15 +8,38 @@ module.exports = {
       github: 'https://github.com/carrieforde'
     },
     siteUrl: 'https://carrieforde.com',
-    logo: 'content/assets/icons/carrie-forde-logo.svg'
+    menu: [
+      {
+        name: 'About',
+        path: '/about'
+      },
+      {
+        name: 'Blog',
+        path: '/blog'
+      }
+    ]
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
+        name: 'assets',
+        path: `${__dirname}/content/assets`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
         name: 'posts',
         path: `${__dirname}/content/posts`
+      }
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: `${__dirname}/content/pages`
       }
     },
     {

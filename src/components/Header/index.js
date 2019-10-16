@@ -1,27 +1,42 @@
-import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
 import React from 'react';
+import { Link, graphql, useStaticQuery } from 'gatsby';
+import PropTypes from 'prop-types';
 
-import Logo from '../../icons/carrie-forde-logo.svg';
 import MainMenu from '../MainMenu';
 import styles from './header.module.css';
 
-const Header = ({ siteTitle }) => (
-  <header className={styles.siteHeader}>
-    <Link className={styles.siteBranding} to="/">
-      <Logo className={styles.siteLogo} />
-      <h1 className={styles.siteTitle}>{siteTitle}</h1>
-    </Link>
-    <MainMenu />
-  </header>
-);
+const Header = () => {
+  const data = useStaticQuery(graphql`
+    {
+      logo: file(absolutePath: { regex: "/logo/" }) {
+        publicURL
+      }
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `);
+  const { title } = data.site.siteMetadata;
+  const logo = data.logo ? data.logo.publicURL : undefined;
+  return (
+    <header className={styles.siteHeader}>
+      <Link className={styles.siteBranding} to="/">
+        {logo && <img src={logo} alt={`${title} logo`} />}
+        <h1 className={data.logo ? styles.siteTitle : undefined}>{title}</h1>
+      </Link>
+      <MainMenu />
+    </header>
+  );
+};
 
 Header.propTypes = {
-  siteTitle: PropTypes.string
+  data: PropTypes.object
 };
 
 Header.defaultProps = {
-  siteTitle: ``
+  siteTitle: ''
 };
 
 export default Header;
