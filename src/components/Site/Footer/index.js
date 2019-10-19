@@ -1,5 +1,5 @@
 import React from 'react';
-import SocialNav from '../SocialNav';
+import SocialNav from '../../SocialNav';
 
 import styles from './footer.module.css';
 import { StaticQuery, graphql } from 'gatsby';

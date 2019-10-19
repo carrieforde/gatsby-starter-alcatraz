@@ -1,10 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Site from '../../components/Site';
-import SEO from '../../components/SEO';
+import SEO from '../../components/Site/Seo';
 import PropTypes from 'prop-types';
-
-import PageHeader from '../../components/PageHeader';
 
 const Post = ({ data }) => {
   const post = data.markdownRemark,
@@ -13,14 +11,8 @@ const Post = ({ data }) => {
 
   return (
     <Site>
-      <SEO title={title} description={description} />
-      <PageHeader
-        title={title}
-        description={description}
-        category={category}
-        date={date}
-        updated={updated}
-      />
+      <SEO title={title} />
+      <h1>{title}</h1>
       <div
         className="post__content"
         dangerouslySetInnerHTML={{ __html: html }}

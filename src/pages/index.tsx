@@ -1,11 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Site from '../components/Site';
-import SEO from '../components/SEO';
+import SEO from '../components/Site/Seo';
+import { Page } from '../interfaces/page.interface';
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data }: Page) => {
   const { frontmatter, html } = data.markdownRemark;
   const { title } = frontmatter;
 
@@ -15,10 +15,6 @@ const IndexPage = ({ data }) => {
       <div dangerouslySetInnerHTML={{ __html: html }}></div>
     </Site>
   );
-};
-
-IndexPage.propTypes = {
-  data: PropTypes.object
 };
 
 export default IndexPage;
