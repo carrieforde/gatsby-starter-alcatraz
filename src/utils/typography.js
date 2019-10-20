@@ -1,23 +1,35 @@
 import Typography from 'typography';
 
 const typography = new Typography({
-  title: 'Carrie Forde',
+  title: 'Gatsby Starter Alcatraz',
   baseFontSize: '16px',
   baseLineHeight: 1.75,
-  googleFonts: [
-    {
-      name: 'Libre Franklin',
-      styles: ['300', '400', '400i', '600', '600i']
-    },
-    {
-      name: 'IBM Plex Mono',
-      styles: ['400', '600']
-    }
+  headerFontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Helvetica Neue',
+    'Arial',
+    'sans-serif',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol'
   ],
-  headerFontFamily: ['Libre Franklin', 'sans-serif'],
-  bodyFontFamily: ['Libre Franklin', 'sans-serif'],
-  headerColor: '#243B53',
-  bodyColor: '#334E68',
+  bodyFontFamily: [
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'Helvetica Neue',
+    'Arial',
+    'sans-serif',
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol'
+  ],
+  headerColor: '#323f4b',
+  bodyColor: '#3e4c59',
   headerWeight: 600,
   boldWeight: 600
 });

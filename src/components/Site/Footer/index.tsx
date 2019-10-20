@@ -3,6 +3,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import SocialNav from '../SocialNav';
 
+import styles from './footer.module.css';
+
 const Footer = () => {
   const { site } = useStaticQuery(
     graphql`
@@ -15,11 +17,11 @@ const Footer = () => {
       }
     `
   );
-  const { title } = site;
+  const { title } = site.siteMetadata;
 
   return (
-    <footer>
-      <p>
+    <footer className={styles.footer}>
+      <p className={styles.copyright}>
         Copyright &copy; {new Date().getFullYear()} {title}.
       </p>
 

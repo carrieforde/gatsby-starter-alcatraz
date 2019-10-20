@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 
+import styles from './mainMenu.module.css';
+
 interface MenuItem {
   name: string;
   path: string;
@@ -25,9 +27,9 @@ const MainMenu = () => {
   const { menu } = site.siteMetadata;
 
   return (
-    <nav>
+    <nav className={styles.mainMenu}>
       {menu.map((item: MenuItem, index: number) => (
-        <Link key={index} to={item.path}>
+        <Link className={styles.menuItem} key={index} to={item.path}>
           {item.name}
         </Link>
       ))}

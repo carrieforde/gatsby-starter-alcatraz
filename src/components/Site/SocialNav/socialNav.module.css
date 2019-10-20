@@ -1,0 +1,19 @@
+.socialNav {
+	composes: listReset from '../../../styles/utilities.module.css';
+	display: inline-flex;
+	margin-top: var(--size-5);
+}
+
+.sociaNavItem {
+	height: var(--size-5);
+	margin-bottom: 0;
+	width: var(--size-5);
+}
+
+.sociaNavItem + .sociaNavItem {
+	margin-left: var(--size-4);
+}
+
+.label {
+	composes: visuallyHidden from '../../../styles/utilities.module.css';
+}

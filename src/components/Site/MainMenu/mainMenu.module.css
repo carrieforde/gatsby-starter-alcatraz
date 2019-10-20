@@ -1,0 +1,7 @@
+.mainMenu {
+	display: inline-flex;
+}
+
+.menuItem + .menuItem {
+	margin-left: var(--size-4);
+}

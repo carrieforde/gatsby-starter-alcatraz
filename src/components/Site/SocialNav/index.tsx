@@ -4,6 +4,8 @@ import { StaticQuery, graphql } from 'gatsby';
 import Mail from '../../../icons/paper-plane-light.svg';
 import Github from '../../../icons/github-brands.svg';
 
+import styles from './socialNav.module.css';
+
 const SocialNav = () => {
   return (
     <StaticQuery
@@ -24,17 +26,17 @@ const SocialNav = () => {
           { mail, github } = social;
 
         return (
-          <ul>
-            <li>
+          <ul className={styles.socialNav}>
+            <li className={styles.sociaNavItem}>
               <a href={mail}>
                 <Mail />
-                <span>Mail</span>
+                <span className={styles.label}>Mail</span>
               </a>
             </li>
-            <li>
+            <li className={styles.sociaNavItem}>
               <a href={github}>
                 <Github />
-                <span>Github</span>
+                <span className={styles.label}>Github</span>
               </a>
             </li>
           </ul>
