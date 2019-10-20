@@ -2,27 +2,17 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Site from '../../components/Site';
 import SEO from '../../components/Site/Seo';
-import PropTypes from 'prop-types';
+import PageElement from '../../components/PageElements/PageElement';
 
 const Post = ({ data }) => {
-  const post = data.markdownRemark,
-    { frontmatter, html } = post,
-    { title, date, updated, category, description } = frontmatter;
+  const { title } = data.markdownRemark.frontmatter;
 
   return (
     <Site>
       <SEO title={title} />
-      <h1>{title}</h1>
-      <div
-        className="post__content"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <PageElement data={data} />
     </Site>
   );
-};
-
-Post.propTypes = {
-  data: PropTypes.object
 };
 
 export default Post;

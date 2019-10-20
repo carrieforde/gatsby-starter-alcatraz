@@ -75,7 +75,7 @@ module.exports = {
         background_color: '#fff',
         theme_color: '#3525e6',
         display: 'minimal-ui',
-        icon: 'src/images/carrie-forde-icon.png' // This path is relative to the root of the site.
+        icon: 'src/images/gatsby-icon.png' // This path is relative to the root of the site.
       }
     },
     {

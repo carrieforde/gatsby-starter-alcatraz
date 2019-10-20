@@ -2,6 +2,7 @@
 title: 'Going Gatsby'
 date: 2019-05-26
 category: 'Development'
+tags: ['gatsby', 'static site generator', 'react']
 description: 'After six years with WordPress, I switched to Gatsby&ndash;a static site generator.'
 ---
 

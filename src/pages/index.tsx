@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import Site from '../components/Site';
 import SEO from '../components/Site/Seo';
 import { Page } from '../interfaces/page.interface';
+import Blog from '../components/Blog';
 
 const IndexPage = ({ data }: Page) => {
   const { frontmatter, html } = data.markdownRemark;
@@ -13,6 +14,7 @@ const IndexPage = ({ data }: Page) => {
     <Site>
       <SEO title={title} />
       <div dangerouslySetInnerHTML={{ __html: html }}></div>
+      <Blog />
     </Site>
   );
 };

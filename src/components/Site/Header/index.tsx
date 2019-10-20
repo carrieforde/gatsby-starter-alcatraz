@@ -5,7 +5,7 @@ import MainMenu from '../MainMenu';
 
 const Header = () => {
   const data = useStaticQuery(graphql`
-    {
+    query {
       logo: file(absolutePath: { regex: "/logo/" }) {
         publicURL
       }

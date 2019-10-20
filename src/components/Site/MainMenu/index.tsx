@@ -9,7 +9,7 @@ interface MenuItem {
 const MainMenu = () => {
   const { site } = useStaticQuery(
     graphql`
-      {
+      query {
         site {
           siteMetadata {
             menu {

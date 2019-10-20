@@ -1,16 +1,14 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Mail from '../../icons/paper-plane-light.svg';
-import Github from '../../icons/github-brands.svg';
-
-import styles from './socialNav.module.css';
+import Mail from '../../../icons/paper-plane-light.svg';
+import Github from '../../../icons/github-brands.svg';
 
 const SocialNav = () => {
   return (
     <StaticQuery
       query={graphql`
-        {
+        query {
           site {
             siteMetadata {
               social {
@@ -26,17 +24,17 @@ const SocialNav = () => {
           { mail, github } = social;
 
         return (
-          <ul className={styles.socialNav}>
-            <li className={styles.socialNavItem}>
+          <ul>
+            <li>
               <a href={mail}>
                 <Mail />
-                <span className={styles.socialNavLabel}>Mail</span>
+                <span>Mail</span>
               </a>
             </li>
-            <li className={styles.socialNavItem}>
+            <li>
               <a href={github}>
                 <Github />
-                <span className={styles.socialNavLabel}>Github</span>
+                <span>Github</span>
               </a>
             </li>
           </ul>
