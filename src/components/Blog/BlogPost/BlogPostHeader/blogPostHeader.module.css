@@ -1,0 +1,19 @@
+.title {
+	font-size: var(--font-size-6);
+}
+
+.titleLink {
+	text-decoration: none;
+}
+
+.byline {
+	font-size: var(--font-size-1);
+	margin-bottom: var(--size-3) !important;
+	margin-top: var(--size-3);
+}
+
+.separator {
+	display: inline-block;
+	margin-left: var(--size-1);
+	margin-right: var(--size-1);
+}

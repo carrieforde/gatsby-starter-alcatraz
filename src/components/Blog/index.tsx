@@ -3,6 +3,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import BlogPost from './BlogPost';
 import { Post } from '../../interfaces/post.interface';
 
+import styles from './blog.module.css';
+
 const Blog = () => {
   const data = useStaticQuery(
     graphql`
@@ -33,9 +35,9 @@ const Blog = () => {
   );
 
   return (
-    <ul>
+    <ul className={styles.blogList}>
       {data.allMarkdownRemark.edges.map((post: Post, index: number) => (
-        <li key={index}>
+        <li key={index} className={styles.blogPost}>
           <BlogPost {...post} />
         </li>
       ))}

@@ -2,7 +2,7 @@
 	align-items: baseline;
 	display: flex;
 	justify-content: space-between;
-	padding: 0 var(--size-4) var(--size-4);
+	margin-bottom: var(--size-4);
 }
 
 .headerLink {

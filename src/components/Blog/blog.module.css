@@ -1,0 +1,7 @@
+.blogList {
+	composes: listReset from '../../styles/utilities.module.css';
+}
+
+.blogPost + .blogPost {
+	margin-top: var(--size-7);
+}

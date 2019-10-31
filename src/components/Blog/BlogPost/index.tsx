@@ -1,9 +1,9 @@
 import React from 'react';
-import { Link } from 'gatsby';
 import { Post } from '../../../interfaces/post.interface';
-import TimeStamp from '../../TimeStamp';
 import Category from '../../Category';
 import Tags from '../../Tags';
+
+import BlogPostHeader from './BlogPostHeader';
 
 const BlogPost = (data: Post) => {
   const { excerpt, frontmatter, timeToRead, fields } = data.node,
@@ -11,14 +11,12 @@ const BlogPost = (data: Post) => {
 
   return (
     <article>
-      <header>
-        <Link to={fields.slug}>
-          <h2 dangerouslySetInnerHTML={{ __html: title }} />
-        </Link>
-        {date && <TimeStamp date={date} />}
-        <span>&#124;</span>
-        <span>{timeToRead} minute read</span>
-      </header>
+      <BlogPostHeader
+        slug={fields.slug}
+        title={title}
+        date={date}
+        timeToRead={timeToRead}
+      />
       <div dangerouslySetInnerHTML={{ __html: description || excerpt }} />
       {(category || tags) && (
         <footer>
