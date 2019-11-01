@@ -6,7 +6,7 @@
 	text-decoration: none;
 }
 
-.byline {
+.meta {
 	font-size: var(--font-size-1);
 	margin-bottom: var(--size-3) !important;
 	margin-top: var(--size-3);
