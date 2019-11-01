@@ -1,0 +1,11 @@
+.description {
+	font-size: var(--font-size-4);
+	margin: var(--size-4) 0 var(--size-6);
+}
+
+@media screen and (min-width: 600px) {
+	.description {
+		font-size: var(--font-size-5);
+		margin: var(--size-5) 0 var(--size-7);
+	}
+}
