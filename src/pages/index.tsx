@@ -4,17 +4,16 @@ import { graphql } from 'gatsby';
 import Site from '../components/Site';
 import SEO from '../components/Site/Seo';
 import { Page } from '../interfaces/page.interface';
-import Blog from '../components/Blog';
+import PageElement from '../components/PageElements/PageElement';
 
 const IndexPage = ({ data }: Page) => {
-  const { frontmatter, html } = data.markdownRemark;
+  const { frontmatter } = data.markdownRemark;
   const { title } = frontmatter;
 
   return (
     <Site>
       <SEO title={title} />
-      <div dangerouslySetInnerHTML={{ __html: html }}></div>
-      <Blog />
+      <PageElement data={data} />
     </Site>
   );
 };
@@ -23,7 +22,7 @@ export default IndexPage;
 
 export const query = graphql`
   query Home {
-    markdownRemark(fileAbsolutePath: {regex: "/home\\.md/"}) {
+    markdownRemark(fileAbsolutePath: { regex: "/home/" }) {
       frontmatter {
         title
         date
@@ -33,4 +32,5 @@ export const query = graphql`
       }
       html
     }
-  }`;
+  }
+`;
