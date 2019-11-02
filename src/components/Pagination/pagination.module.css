@@ -1,0 +1,19 @@
+.pagination {
+	display: flex;
+	margin-top: var(--size-6);
+}
+
+.paginationItem {
+	flex: 0 0 50%;
+}
+
+.previous {
+	composes: paginationItem;
+	margin-right: auto;
+}
+
+.next {
+	composes: paginationItem;
+	margin-left: auto;
+	text-align: right;
+}

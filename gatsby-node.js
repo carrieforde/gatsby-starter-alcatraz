@@ -24,12 +24,46 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-  return graphql(`
-    {
-      allMarkdownRemark {
+  const result = await graphql(`
+    query Content {
+      pages: allMarkdownRemark(
+        filter: {
+          fileAbsolutePath: { regex: "/pages/" }
+          fields: { slug: { ne: "/home/" } }
+        }
+      ) {
         edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      posts: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/posts/" } }
+        sort: { fields: frontmatter___date, order: DESC }
+      ) {
+        edges {
+          previous {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+          next {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
           node {
             fields {
               slug
@@ -38,33 +72,33 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     }
-  `).then(result => {
-    result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      createPage({
-        path: node.fields.slug,
-        component: path.resolve('./src/templates/Post/Post.tsx'),
-        context: {
-          slug: node.fields.slug
-        }
-      });
+  `);
+
+  if (result.errors) {
+    throw result.errors;
+  }
+
+  const { pages, posts } = result.data;
+
+  posts.edges.forEach(post => {
+    createPage({
+      path: post.node.fields.slug,
+      component: path.resolve('./src/templates/Post/Post.tsx'),
+      context: {
+        slug: post.node.fields.slug,
+        previous: post.previous ? post.previous : null,
+        next: post.next ? post.next : null
+      }
     });
   });
-};
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
-
-  if (node.internal.type === 'MarkdownRemark') {
-    const slug = createFilePath({
-      node,
-      getNode,
-      basePath: `${__dirname}/content/pages`
+  pages.edges.forEach(page => {
+    createPage({
+      path: page.node.fields.slug,
+      component: path.resolve('./src/templates/Page/Page.tsx'),
+      context: {
+        slug: page.node.fields.slug
+      }
     });
-
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug
-    });
-  }
+  });
 };

@@ -1,24 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import Site from '../../components/Site';
 import SEO from '../../components/Site/Seo';
 import PageElement from '../../components/PageElements/PageElement';
-import Pagination from '../../components/Pagination';
 
-const Post = props => {
-  const { title } = props.data.markdownRemark.frontmatter;
-  const { previous, next } = props.pageContext;
+const Page = ({ data }) => {
+  const { title } = data.markdownRemark.frontmatter;
 
   return (
     <Site>
       <SEO title={title} />
-      <PageElement data={props.data} />
-      <Pagination previous={previous} next={next} />
+      <PageElement data={data} />
     </Site>
   );
 };
 
-export default Post;
+export default Page;
 
 export const query = graphql`
   query($slug: String) {
@@ -26,7 +23,6 @@ export const query = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        updated(formatString: "MMMM DD, YYYY")
         category
         description
       }
