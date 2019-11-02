@@ -5,34 +5,44 @@ import { Post } from '../../interfaces/post.interface';
 
 import styles from './blog.module.css';
 
-const Blog = () => {
-  const data = useStaticQuery(
-    graphql`
-      query {
-        allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/posts/" } }
-          sort: { fields: [frontmatter___date], order: DESC }
-        ) {
-          edges {
-            node {
-              frontmatter {
-                title
-                date(formatString: "MMMM DD, YYYY")
-                description
-                category
-                tags
-              }
-              timeToRead
-              excerpt
-              fields {
-                slug
+interface Blog {
+  data?: {
+    edges: {
+      node: Post;
+    };
+  };
+}
+
+const Blog = ({ data }: Blog) => {
+  if (data === undefined) {
+    data = useStaticQuery(
+      graphql`
+        query {
+          allMarkdownRemark(
+            filter: { fileAbsolutePath: { regex: "/posts/" } }
+            sort: { fields: [frontmatter___date], order: DESC }
+          ) {
+            edges {
+              node {
+                frontmatter {
+                  title
+                  date(formatString: "MMMM DD, YYYY")
+                  description
+                  category
+                  tags
+                }
+                timeToRead
+                excerpt
+                fields {
+                  slug
+                }
               }
             }
           }
         }
-      }
-    `
-  );
+      `
+    );
+  }
 
   return (
     <ul className={styles.blogList}>

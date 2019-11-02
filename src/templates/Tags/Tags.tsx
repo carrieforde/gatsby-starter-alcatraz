@@ -3,8 +3,7 @@ import { graphql } from 'gatsby';
 import Site from '../../components/Site';
 import SEO from '../../components/Site/Seo';
 import PageHeader from '../../components/PageElements/PageHeader';
-import { Post } from '../../interfaces/post.interface';
-import BlogPost from '../../components/Blog/BlogPost';
+import Blog from '../../components/Blog';
 
 const Tags = props => {
   const { tag } = props.pageContext;
@@ -13,14 +12,7 @@ const Tags = props => {
     <Site>
       <SEO title={tag} />
       <PageHeader title={`Posts tagged ${tag}`} />
-
-      <ul>
-        {props.data.allMarkdownRemark.edges.map((post: Post, index: number) => (
-          <li key={index}>
-            <BlogPost {...post} />
-          </li>
-        ))}
-      </ul>
+      <Blog data={props.data} />
     </Site>
   );
 };

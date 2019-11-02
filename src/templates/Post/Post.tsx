@@ -9,8 +9,6 @@ const Post = props => {
   const { title } = props.data.markdownRemark.frontmatter;
   const { previous, next } = props.pageContext;
 
-  console.log(props);
-
   return (
     <Site>
       <SEO title={title} />

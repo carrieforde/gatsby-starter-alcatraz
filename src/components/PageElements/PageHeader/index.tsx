@@ -4,8 +4,10 @@ import PageTitle from '../PageTitle';
 import PageDescription from '../PageDescription';
 import { Frontmatter } from '../../../interfaces/frontmatter.interface';
 
+import styles from './page-header.module.css';
+
 const PageHeader = ({ title, description }: Frontmatter) => (
-  <header>
+  <header className={styles.pageHeader}>
     <PageTitle title={title} />
     {description && <PageDescription description={description} />}
   </header>

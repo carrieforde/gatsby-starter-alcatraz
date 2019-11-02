@@ -3,10 +3,7 @@ import { graphql } from 'gatsby';
 import Site from '../../components/Site';
 import SEO from '../../components/Site/Seo';
 import PageHeader from '../../components/PageElements/PageHeader';
-import { Post } from '../../interfaces/post.interface';
-import BlogPost from '../../components/Blog/BlogPost';
-
-import styles from '../../components/Blog/BlogPost/blog-post.module.css';
+import Blog from '../../components/Blog';
 
 const Categories = props => {
   const { category } = props.pageContext;
@@ -15,14 +12,7 @@ const Categories = props => {
     <Site>
       <SEO title={category} />
       <PageHeader title={`Posts in ${category}`} />
-
-      <ul className={styles.blogList}>
-        {props.data.allMarkdownRemark.edges.map((post: Post, index: number) => (
-          <li key={index} className={styles.blogPost}>
-            <BlogPost {...post} />
-          </li>
-        ))}
-      </ul>
+      <Blog data={props.data} />
     </Site>
   );
 };
