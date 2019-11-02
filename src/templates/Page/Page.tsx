@@ -3,8 +3,18 @@ import { graphql } from 'gatsby';
 import Site from '../../components/Site';
 import SEO from '../../components/Site/Seo';
 import PageElement from '../../components/PageElements/PageElement';
+import { Frontmatter } from '../../interfaces/frontmatter.interface';
 
-const Page = ({ data }) => {
+interface Page {
+  data: {
+    markdownRemark: {
+      frontmatter: Frontmatter;
+      html: string;
+    };
+  };
+}
+
+const Page = ({ data }: Page) => {
   const { title } = data.markdownRemark.frontmatter;
 
   return (

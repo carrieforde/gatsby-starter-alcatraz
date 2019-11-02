@@ -5,7 +5,7 @@ import PageHeader from '../PageHeader';
 
 const PageElement = ({ data }: Page) => {
   const { frontmatter, html } = data.markdownRemark;
-  const { title, date, category, description } = frontmatter;
+  const { title, description } = frontmatter;
 
   return (
     <article>

@@ -4,8 +4,19 @@ import Site from '../../components/Site';
 import SEO from '../../components/Site/Seo';
 import PageHeader from '../../components/PageElements/PageHeader';
 import Blog from '../../components/Blog';
+import { Post } from '../../interfaces/post.interface';
+import { PageContext } from '../../interfaces/page-context.interface';
 
-const Tags = props => {
+interface Tags {
+  pageContext: PageContext;
+  data: {
+    edges: {
+      node: Post;
+    };
+  };
+}
+
+const Tags = (props: Tags) => {
   const { tag } = props.pageContext;
 
   return (

@@ -4,8 +4,19 @@ import Site from '../../components/Site';
 import SEO from '../../components/Site/Seo';
 import PageHeader from '../../components/PageElements/PageHeader';
 import Blog from '../../components/Blog';
+import { PageContext } from '../../interfaces/page-context.interface';
+import { Post } from '../../interfaces/post.interface';
 
-const Categories = props => {
+interface Categories {
+  pageContext: PageContext;
+  data: {
+    edges: {
+      node: Post;
+    };
+  };
+}
+
+const Categories = (props: Categories) => {
   const { category } = props.pageContext;
 
   return (

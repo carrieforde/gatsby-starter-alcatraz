@@ -7,8 +7,10 @@ import styles from './blog.module.css';
 
 interface Blog {
   data?: {
-    edges: {
-      node: Post;
+    allMarkdownRemark: {
+      edges: {
+        node: Post;
+      };
     };
   };
 }
