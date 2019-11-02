@@ -1,5 +1,8 @@
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
+
+const slugify = slug => slug.replace(/\s/g, '-').toLowerCase();
+
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -20,6 +23,34 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       node,
       name: 'slug',
       value: slug
+    });
+  }
+
+  if (node.internal.type === 'AllMarkdownRemark') {
+    const category = createFilePath({
+      node,
+      getNode,
+      basePath: `${__dirname}/content/posts`
+    });
+
+    createNodeField({
+      node,
+      name: 'category',
+      value: category
+    });
+  }
+
+  if (node.internal.type === 'AllMarkdownRemark') {
+    const tag = createFilePath({
+      node,
+      getNode,
+      basePath: `${__dirname}/content/posts`
+    });
+
+    createNodeField({
+      node,
+      name: 'tag',
+      value: tag
     });
   }
 };
@@ -71,6 +102,20 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      categories: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/posts/" } }
+      ) {
+        group(field: frontmatter___category) {
+          fieldValue
+        }
+      }
+      tags: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/posts/" } }
+      ) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
     }
   `);
 
@@ -78,7 +123,7 @@ exports.createPages = async ({ graphql, actions }) => {
     throw result.errors;
   }
 
-  const { pages, posts } = result.data;
+  const { pages, posts, categories, tags } = result.data;
 
   posts.edges.forEach(post => {
     createPage({
@@ -98,6 +143,26 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve('./src/templates/Page/Page.tsx'),
       context: {
         slug: page.node.fields.slug
+      }
+    });
+  });
+
+  categories.group.forEach(category => {
+    createPage({
+      path: `category/${slugify(category.fieldValue)}`,
+      component: path.resolve('./src/templates/Categories/Categories.tsx'),
+      context: {
+        category: category.fieldValue
+      }
+    });
+  });
+
+  tags.group.forEach(tag => {
+    createPage({
+      path: `tag/${slugify(tag.fieldValue)}`,
+      component: path.resolve('./src/templates/Tags/Tags.tsx'),
+      context: {
+        tag: tag.fieldValue
       }
     });
   });
