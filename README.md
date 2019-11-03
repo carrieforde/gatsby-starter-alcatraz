@@ -1,9 +1,3 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://carrieforde.com">
-    <img alt="Carrie Forde logo" src="src/icons/carrie-forde-logo.svg" width="60" />
-  </a>
-</p>
 <h1 align="center">
   gatsby-starter-alcatraz
 </h1>
