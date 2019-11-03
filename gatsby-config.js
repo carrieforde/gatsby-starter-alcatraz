@@ -67,6 +67,12 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
+      resolve: 'gatsby-plugin-tinacms',
+      options: {
+        plugins: ['gatsby-tinacms-git', 'gatsby-tinacms-remark']
+      }
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'gatsby-starter-alcatraz',

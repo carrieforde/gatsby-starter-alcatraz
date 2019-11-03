@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import Site from '../../components/Site';
 import SEO from '../../components/Site/Seo';
 import PageElement from '../../components/PageElements/PageElement';
 import Pagination from '../../components/Pagination';
+import { PostForm } from '../../components/Tina/PostForm';
 import { Frontmatter } from '../../interfaces/frontmatter.interface';
 import { PageContext } from '../../interfaces/page-context.interface';
+import { remarkForm } from 'gatsby-tinacms-remark';
 
 interface Post {
   pageContext: PageContext;
@@ -13,6 +15,9 @@ interface Post {
     markdownRemark: {
       frontmatter: Frontmatter;
       html: string;
+      fileRelativePath: string;
+      rawFrontmatter: string;
+      rawMarkdownBody: string;
     };
   };
 }
@@ -30,7 +35,7 @@ const Post = (props: Post) => {
   );
 };
 
-export default Post;
+export default remarkForm(Post, PostForm);
 
 export const query = graphql`
   query($slug: String) {
@@ -43,6 +48,9 @@ export const query = graphql`
         description
       }
       html
+      fileRelativePath
+      rawFrontmatter
+      rawMarkdownBody
     }
   }
 `;

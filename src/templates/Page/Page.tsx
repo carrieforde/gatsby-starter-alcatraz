@@ -3,13 +3,20 @@ import { graphql } from 'gatsby';
 import Site from '../../components/Site';
 import SEO from '../../components/Site/Seo';
 import PageElement from '../../components/PageElements/PageElement';
+import { PageForm } from '../../components/Tina/PageForm';
 import { Frontmatter } from '../../interfaces/frontmatter.interface';
+import { remarkForm } from 'gatsby-tinacms-remark';
+import { withPlugin } from 'react-tinacms';
+import CreatePageButton from '../../components/Tina/CreatePageButton';
 
 interface Page {
   data: {
     markdownRemark: {
       frontmatter: Frontmatter;
       html: string;
+      fileRelativePath: string;
+      rawFrontmatter: string;
+      rawMarkdownBody: string;
     };
   };
 }
@@ -25,7 +32,7 @@ const Page = ({ data }: Page) => {
   );
 };
 
-export default Page;
+export default withPlugin(remarkForm(Page, PageForm), CreatePageButton);
 
 export const query = graphql`
   query($slug: String) {
@@ -37,6 +44,9 @@ export const query = graphql`
         description
       }
       html
+      fileRelativePath
+      rawFrontmatter
+      rawMarkdownBody
     }
   }
 `;
