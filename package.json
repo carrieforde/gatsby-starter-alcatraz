@@ -29,7 +29,7 @@
     "gatsby-source-filesystem": "^2.0.36",
     "gatsby-tinacms-git": "^0.2.5",
     "gatsby-tinacms-remark": "^0.3.5",
-    "gatsby-transformer-remark": "^2.3.12",
+    "gatsby-transformer-remark": "^5.25.1",
     "gatsby-transformer-sharp": "^2.1.19",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
